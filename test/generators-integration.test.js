@@ -13,19 +13,6 @@ const exopts = {
   preferLocal: false
 }
 
-describe('without a linter', () => {
-  beforeAll(async () => {
-    // creates a new temp directory
-    process.chdir(tempy.directory())
-    await execa(IGNITE, ['new', APP, '--min', '--skip-git', '--no-lint', '--boilerplate', BOILERPLATE])
-    process.chdir(APP)
-  })
-
-  test('does not have a linting script', async () => {
-    expect(jetpack.read('package.json', 'json')['scripts']['lint']).toBe(undefined)
-  })
-})
-
 describe('generators', () => {
   beforeAll(async () => {
     // creates a new temp directory
